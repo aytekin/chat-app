@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     console.log(this.username + ' us');
     this.loginService.saveUser(this.username).subscribe(x => {
       this.sharedFunctions.setLocalStorage('username', x.value);
-      this.sharedFunctions.redirectToPage('/groups');
+      this.sharedFunctions.redirectToPage('/home');
     });
   }
 }
