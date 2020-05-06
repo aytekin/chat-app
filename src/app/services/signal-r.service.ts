@@ -36,15 +36,26 @@ export class SignalRService {
       });
   };
 
-  public loginSend = (username: string) => {
-    this.hubConnection.invoke('login', username)
+  public sendBroadCastMessage = (message: string) => {
+    this.hubConnection.invoke('ChatBroadCast', message)
       .catch(err => console.log(err));
   };
 
-  public loginListener() {
-    this.hubConnection.on('login', (res) => {
-        this.userReceived.emit(res);
+  public broadcastListener() {
+    this.hubConnection.on('receiveBroadCast', (res) => {
+      console.log(res);
+      //this.userReceived.emit(res);
       }
     );
+  };
+
+  public sendUserMessage = (toUser: string,fromUser: string, message: string) => {
+    this.hubConnection.invoke('PrivateChat', toUser,fromUser,message)
+      .catch(err => console.log(err));
+  };
+
+  public userMessagesListener = (toUser: string,fromUser: string) => {
+    this.hubConnection.invoke('receiveMessage', toUser,fromUser)
+      .catch(err => console.log(err));
   };
 }
