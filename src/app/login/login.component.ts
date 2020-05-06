@@ -28,11 +28,7 @@ export class LoginComponent implements OnInit {
 
   submit(form: NgForm) {
     if (form.valid) {
-      this.signalRService.loginSend(this.username);
-      this.signalRService.userReceived.subscribe((user: any) => {
-        console.log('login component ');
-        console.log(user);
-      });
+
 
     }
 
