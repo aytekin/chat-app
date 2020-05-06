@@ -53,7 +53,7 @@ export class SignalRService {
   };
 
   public userMessagesListener = (toUser: string,fromUser: string) => {
-    this.hubConnection.invoke('receiveMessage', toUser,fromUser)
+    this.hubConnection.on('receiveMessage', toUser,fromUser)
       .catch(err => console.log(err));
   };
 }
