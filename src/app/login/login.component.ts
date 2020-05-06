@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   saveUser() {
     console.log(this.username + " us");
     this.loginService.saveUser(this.username).subscribe(x=>{
-      console.log(x);
+      localStorage.setItem('username', x.value);
     })
   }
 }
