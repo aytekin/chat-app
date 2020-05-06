@@ -3,6 +3,8 @@ import {NgForm} from '@angular/forms';
 import {SignalRService} from '../services/signal-r.service';
 import {ChatUser} from '../shared/model/ChatUser';
 import {LoginServiceService} from "./login-service.service";
+import SharedFunctions from "../shared/shared-functions";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,9 +14,12 @@ import {LoginServiceService} from "./login-service.service";
 export class LoginComponent implements OnInit {
 
   public username: string;
+  private sharedFunctions = new SharedFunctions(this.router);
 
-
-  constructor(private signalRService: SignalRService, private loginService:LoginServiceService) {
+  constructor(private signalRService: SignalRService,
+              private loginService:LoginServiceService,
+              private router: Router
+              ) {
   }
 
   ngOnInit(): void {
@@ -39,7 +44,8 @@ export class LoginComponent implements OnInit {
   saveUser() {
     console.log(this.username + " us");
     this.loginService.saveUser(this.username).subscribe(x=>{
-      localStorage.setItem('username', x.value);
+      this.sharedFunctions.setLocalStorage('username',x.value);
+      this.sharedFunctions.redirectToPage('/groups');
     })
   }
 }
