@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {SignalRService} from '../services/signal-r.service';
-import {ChatUser} from '../shared/model/ChatUser';
-import {LoginServiceService} from "./login-service.service";
-import SharedFunctions from "../shared/shared-functions";
-import {Router} from "@angular/router";
+import {LoginServiceService} from './login-service.service';
+import SharedFunctions from '../shared/shared-functions';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +16,9 @@ export class LoginComponent implements OnInit {
   private sharedFunctions = new SharedFunctions(this.router);
 
   constructor(private signalRService: SignalRService,
-              private loginService:LoginServiceService,
+              private loginService: LoginServiceService,
               private router: Router
-              ) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -29,11 +28,7 @@ export class LoginComponent implements OnInit {
 
   submit(form: NgForm) {
     if (form.valid) {
-      this.signalRService.loginSend(this.username);
-      this.signalRService.userReceived.subscribe((user: ChatUser) => {
-        console.log('login component ');
-        console.log(user);
-      });
+
 
     }
 
@@ -42,10 +37,10 @@ export class LoginComponent implements OnInit {
   }
 
   saveUser() {
-    console.log(this.username + " us");
-    this.loginService.saveUser(this.username).subscribe(x=>{
-      this.sharedFunctions.setLocalStorage('username',x.value);
+    console.log(this.username + ' us');
+    this.loginService.saveUser(this.username).subscribe(x => {
+      this.sharedFunctions.setLocalStorage('username', x.value);
       this.sharedFunctions.redirectToPage('/groups');
-    })
+    });
   }
 }
