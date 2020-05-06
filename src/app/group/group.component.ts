@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import SharedFunctions from "../shared/shared-functions";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-group',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupComponent implements OnInit {
 
-  constructor() { }
+  private sharedFunctions = new SharedFunctions(this.route);
+  username: string = 'mcaylak';
+
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
   }
 
+  redirectChatPage() {
+    this.sharedFunctions.redirectToPage('/chat/' + this.username);
+  }
 }
