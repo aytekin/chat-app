@@ -1,8 +1,9 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Message} from "../shared/model/Message";
-import {User} from "../shared/model/User";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Message} from '../shared/model/Message';
+import {User} from '../shared/model/User';
+import {Group} from '../shared/model/Group';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +15,22 @@ export default class ChatService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getUserMessages(toName: string, fromName: string): Observable<Message[]>{
-    return (<Observable<Message[]>>this.httpClient.get(this.URL + 'GetUserMessages',
+  public getUserMessages(toName: string, fromName: string): Observable<Message[]> {
+    return (<Observable<Message[]>> this.httpClient.get(this.URL + 'GetUserMessages',
       {params: new HttpParams().append('toUser', toName).append('fromUser', fromName)}));
   }
 
-  public getGroupMessages(groupName: string): Observable<Message[]>{
-    return (<Observable<Message[]>>this.httpClient.get(this.URL + 'GetGroupMessages',{params: new HttpParams().append('groupName',groupName)}));
+  public getGroupMessages(groupName: string): Observable<Message[]> {
+    return (<Observable<Message[]>> this.httpClient.get(this.URL + 'GetGroupMessages', {params: new HttpParams().append('groupName', groupName)}));
   }
 
 
+  public getAllUsers(): Observable<User[]> {
+    return (<Observable<User[]>> this.httpClient.get(this.URL + 'GetAllUsers'));
+  }
 
-  public getAllUsers(): Observable<User[]>{
-    return (<Observable<User[]>>this.httpClient.get(this.URL + 'GetAllUsers'));
+  public getAllGroups(): Observable<Group[]> {
+    return this.httpClient.get(this.URL + 'GetAllGroups') as Observable<Group[]>;
   }
 
 }

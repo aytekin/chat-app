@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
 import { AllChatComponent } from './all-chat/all-chat.component';
 import {MatButtonModule} from "@angular/material/button";
+import { GroupChatComponent } from './group-chat/group-chat.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatButtonModule} from "@angular/material/button";
     GroupComponent,
     ChatComponent,
     HomePageComponent,
-    AllChatComponent
+    AllChatComponent,
+    GroupChatComponent
   ],
     imports: [
         BrowserModule,
