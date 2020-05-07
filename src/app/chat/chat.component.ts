@@ -43,6 +43,8 @@ export class ChatComponent implements OnInit {
   }
 
   saveMessage(){
+    const receiveMessage = new Message(this.message,this.fromName,this.toName,null,new Date().toLocaleString());
+    this.messageList.push(receiveMessage);
     this._hubConnection.invoke('PrivateChat', this.fromName,this.toName,this.message).then(res=>{
       console.log("Mesaj gönderildi");
     })
