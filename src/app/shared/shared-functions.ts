@@ -6,12 +6,12 @@ export default class SharedFunctions {
   constructor(@Inject(Router) private router: Router) {
   }
 
-  public readLocalStorage(key: string): string{
-    return localStorage.getItem(key);
+  public readLocalStorage(key: string): any{
+    return JSON.parse(localStorage.getItem(key));
   }
 
-  public setLocalStorage(key: string,value: string){
-    localStorage.setItem(key, value);
+  public setLocalStorage(key: string,value: any){
+    localStorage.setItem(key, JSON.stringify(value));
   }
 
   public redirectToPage(routeName: string){

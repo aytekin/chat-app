@@ -36,9 +36,8 @@ export class LoginComponent implements OnInit {
   }
 
   saveUser() {
-    console.log(this.username + ' us');
     this.loginService.saveUser(this.username).subscribe(x => {
-      this.sharedFunctions.setLocalStorage('username', x.value);
+      this.sharedFunctions.setLocalStorage('user', x);
       this.sharedFunctions.redirectToPage('/home');
     });
   }

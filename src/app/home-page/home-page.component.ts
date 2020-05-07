@@ -24,7 +24,7 @@ export class HomePageComponent implements OnInit {
   getAllUsers(){
     this.chatService.getAllUsers().subscribe(x=>{
       this.users = x;
-      let index = this.users.findIndex(x=>x.username == this.sharedFunctions.readLocalStorage('username'));
+      let index = this.users.findIndex(x=>x.username == this.sharedFunctions.readLocalStorage('user').username);
       this.users.splice(index,1);
     })
   }
