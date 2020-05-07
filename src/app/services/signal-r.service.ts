@@ -48,7 +48,7 @@ export class SignalRService {
   };
 
   public sendUserMessage = (toUser: string,fromUser: string, message: string) => {
-    this.hubConnection.invoke('PrivateChat', toUser,fromUser,message)
+    return this.hubConnection.invoke('PrivateChat', toUser,fromUser,message)
       .catch(err => console.log(err));
   };
 

@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.signalRService.buildConnection();
-    this.signalRService.startConnection();
+
   }
 
   submit(form: NgForm) {
