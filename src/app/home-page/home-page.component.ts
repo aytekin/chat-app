@@ -32,4 +32,8 @@ export class HomePageComponent implements OnInit {
   redirectChatPage(username: string) {
     this.sharedFunctions.redirectToPage('/chat/' + username);
   }
+
+  redirectToAllChat() {
+    this.sharedFunctions.redirectToPage('/all-chat');
+  }
 }

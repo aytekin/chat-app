@@ -29,13 +29,11 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fromName = this.sharedFunctions.readLocalStorage('username');
+    this.fromName = this.sharedFunctions.readLocalStorage('user').username;
     this.toName = this.route.snapshot.paramMap.get('id');
     this.startConnection();
     this.getMessages();
     this.listenMessage();
-
-
   }
 
   sendMessage() {

@@ -10,6 +10,8 @@ import { ChatComponent } from './chat/chat.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
+import { AllChatComponent } from './all-chat/all-chat.component';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -17,16 +19,18 @@ import {MatCardModule} from "@angular/material/card";
     LoginComponent,
     GroupComponent,
     ChatComponent,
-    HomePageComponent
+    HomePageComponent,
+    AllChatComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatCardModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatButtonModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

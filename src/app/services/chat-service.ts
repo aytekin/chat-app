@@ -19,6 +19,12 @@ export default class ChatService {
       {params: new HttpParams().append('toUser', toName).append('fromUser', fromName)}));
   }
 
+  public getGroupMessages(groupName: string): Observable<Message[]>{
+    return (<Observable<Message[]>>this.httpClient.get(this.URL + 'GetGroupMessages',{params: new HttpParams().append('groupName',groupName)}));
+  }
+
+
+
   public getAllUsers(): Observable<User[]>{
     return (<Observable<User[]>>this.httpClient.get(this.URL + 'GetAllUsers'));
   }
